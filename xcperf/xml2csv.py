@@ -18,7 +18,7 @@ def xml_to_csv(xml_file):
         print('columns', columns)
         # 写入表头
         writer.writerow(columns)
-        
+
         # 遍历XML中的每个节点
         rows = root.findall('.//row')
         if len(rows) == 0:
@@ -52,7 +52,7 @@ def node_to_data(node):
         return node.text
     else:
         return 'N/A'
-    
+
 def main():
     argv = sys.argv
     if len(argv) > 1:
