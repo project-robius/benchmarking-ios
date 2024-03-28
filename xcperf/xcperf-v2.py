@@ -15,7 +15,6 @@ run: `python3 xcperf-v2.py <device_id> <process_id>`
 eg: `python3 xcperf-v2.py 00008101-001575C92E90801E makepad_comp_demo`
 """
 
-import os
 import subprocess
 import sys
 from xml2csv import xml_to_csv
