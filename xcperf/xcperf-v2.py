@@ -69,6 +69,9 @@ def xcrun_record_template(device_id, process_id, template_name, instrument="", w
         raise Exception(f'Could not record template "{template_name}" in device "{device_id}" in process "{process_id}"/nRun Command: "{" ".join(final_command)}"')
 
 def xcrun_export_trace_file(input_trace_file_name):
+    # TODO: stop using the > and shell=True, save the output of the command run with subprocess.run()
+    # and store it in a file
+
     output_file_name = input_trace_file_name.replace(".trace", "") + ".xml"
 
     command = ["xcrun", "xctrace", "export"]
@@ -76,8 +79,10 @@ def xcrun_export_trace_file(input_trace_file_name):
 
     final_command = command + options
 
-    result = os.system(" ".join(final_command))
-    if result == 0:
+    process = subprocess.Popen(final_command, shell=True)
+    process.communicate()
+    
+    if process.returncode == 0:
         return output_file_name
     else:
         raise Exception(f'Could not export trace file {input_trace_file_name}/nRun Command: "{" ".join(final_command)}"')
