@@ -95,7 +95,7 @@ def xcrun_record_template(
         return output_file_name
     else:
         raise Exception(
-            f'Could not record template "{template_name}" in device "{device_id}" in process "{process_id}"/nRun Command: "{" ".join(final_command)}"'
+            f'Could not record template "{template_name}" in device "{device_id}" in process "{process_id}"/nFailed Command: "{" ".join(final_command)}"'
         )
 
 
@@ -117,7 +117,7 @@ def xcrun_export_trace_file(input_trace_file_name):
         return output_file_name
     else:
         raise Exception(
-            f'Could not export trace file {input_trace_file_name}/nRun Command: "{" ".join(final_command)}"'
+            f'Could not export trace file {input_trace_file_name}/nFailed Command: "{" ".join(final_command)}"'
         )
 
 
@@ -143,9 +143,8 @@ def xcrun_export_trace_file_table(input_trace_file_name, table_name):
         return output_file_name
     else:
         raise Exception(
-            f'Could not export table "{table_name}" from trace file {input_trace_file_name}/nRun Command: "{" ".join(final_command)}"'
+            f'Could not export table "{table_name}" from trace file {input_trace_file_name}/nFailed Command: "{" ".join(final_command)}"'
         )
-
 
 if __name__ == "__main__":
     main()
