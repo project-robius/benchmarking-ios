@@ -1,4 +1,5 @@
 import csv
+import os
 import sys
 import xml.etree.ElementTree as ET
 
@@ -8,6 +9,9 @@ def xml_to_csv(xml_file):
     schema_name = root.find('.//schema').attrib['name']
     print('schema_name', schema_name)
     csv_file = f"{schema_name}.csv"
+    
+    path, _ = os.path.splitext(xml_file)
+    csv_file = path.split("/")[-1] + ".csv"
 
     # 打开CSV文件进行写入
     with open(csv_file, 'w', newline='') as csvfile:
